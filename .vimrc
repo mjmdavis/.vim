@@ -91,7 +91,8 @@ set wrap
 set textwidth=79
 " not sure what this does:set formatoptions=qrn1
 " coloured column at 85chars
-same here: set colorcolumn=85
+" same here: 
+set colorcolumn=85
 
 "not text chars are shown
 "setnlist
