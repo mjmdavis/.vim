@@ -61,7 +61,6 @@ set backspace=indent,eol,start
 set laststatus=2
 
 "only in vim 7.3
-set relativenumber
 set undofile
 
 "set the leader
@@ -87,7 +86,6 @@ set hlsearch
 nnoremap <leader><space> :nohl<cr>
 
 "settings for long lines
-set wrap
 set textwidth=79
 " not sure what this does:set formatoptions=qrn1
 " coloured column at 85chars
