@@ -1,111 +1,112 @@
-"pathogen setup
-filetype off
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
-
-"disable vi compatibility
 set nocompatible
+filetype off
 
-"there are some vulnerabilities associated with modelines
-"disable them for now
-set modelines=0
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-"#arduino syntax enable
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Fuzzy search for files
+Plugin 'kien/ctrlp.vim'
+
+" Cool status line thingy
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Git plugin
+Plugin 'tope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Brief help
+" " :PluginList          - list configured plugins
+" " :PluginInstall(!)    - install (update) plugins
+" " :PluginSearch(!) foo - search (or refresh cache first) for foo
+" " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+" "
+" " see :h vundle for more details or wiki for FAQ
+" " Put your non-Plugin stuff after this line
+
+syntax on
+" #arduino syntax enable
 autocmd! BufNewFile,BufRead *.ino setlocal ft=arduino
 
-"indenting for Deere standard
+
+" indenting for Deere standard
+" set expandtab
+" set tabstop=3
+" set shiftwidth=3
+" set softtabstop=3
+
+set modelines=0
+
 set expandtab
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 
-"Set linenumber
-set number
-
-"search settings
-set hlsearch
-
-"stuff from SteveLosh.com
 set encoding=utf-8
-set autoindent
-
-"set the min number of lines to keep below the cursor
 set scrolloff=3
-"show the modeline stuff
+set autoindent
 set showmode
 set showcmd
-
-"enable non saved buffers to be left
 set hidden
-
-"tab completion for commands with wildmode
 set wildmenu
 set wildmode=list:longest
-
-"visual bell
 set visualbell
-
-"set a visible line for the cursor
 set cursorline
-
-"set the redrawing to a faster mode for local connections
 set ttyfast
-
-"enable the ruler to display cursor position
 set ruler
-
-"set the backspace mode
 set backspace=indent,eol,start
-
-"keep statuslines in other windows
 set laststatus=2
-
-"only in vim 7.3
+set relativenumber
+set number
 set undofile
 
-"set the leader
-let mapleader = '\'
+"let mapleader = ","
 
-"set verymagic search
 nnoremap / /\v
 vnoremap / /\v
-
-"search case settings
 set ignorecase
 set smartcase
-
-"set default /g on search
 set gdefault
-
-"set incremental highlighted search
 set incsearch
 set showmatch
 set hlsearch
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
 
-"quickly disable search highlighting
-nnoremap <leader><space> :nohl<cr>
+set wrap
+"set textwidth=79
+"set formatoptions=qrn1
+set colorcolumn=120
 
-"settings for long lines
-set textwidth=79
-" not sure what this does:set formatoptions=qrn1
-" coloured column at 85chars
-" same here: 
-set colorcolumn=85
-
-"not text chars are shown
-"setnlist
-
-"settings to disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-"move around wrapped lines normally
 nnoremap j gj
 nnoremap k gk
 
+"save when editor loses focus
+"su FocusLost * :wa
+
+nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+set guifont=PragmataPro
+
+" Powerline setup
+set laststatus=2
+
+" Hilight excess line length
+augroup vimrc_autocmds
+    autocmd!
+    " highlight characters past column 120
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python match Excess /\%120v.*/
+    autocmd FileType python set nowrap
+    augroup END
