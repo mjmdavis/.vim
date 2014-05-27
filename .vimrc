@@ -23,6 +23,9 @@ Plugin 'scrooloose/nerdtree'
 " Python Mode
 Plugin 'klen/python-mode'
 
+" Jedi python completion
+Plugin 'davidhalter/jedi-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -89,7 +92,7 @@ vnoremap <tab> %
 set wrap
 "set textwidth=79
 "set formatoptions=qrn1
-set colorcolumn=120
+set colorcolumn=80
 
 nnoremap j gj
 nnoremap k gk
@@ -133,7 +136,7 @@ augroup vimrc_autocmds
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 
 " Documentation
 let g:pymode_doc = 1
