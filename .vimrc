@@ -26,6 +26,9 @@ Plugin 'klen/python-mode'
 " Jedi python completion
 Plugin 'davidhalter/jedi-vim'
 
+" Visual diff plugin
+Plugin 'AndrewRadev/linediff.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -81,7 +84,6 @@ nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
